@@ -7,6 +7,20 @@ void main() {
 
 
   });
+  test('Debe de tener un Maximo de longitud', () async {
+  expect(() => Nombre('olaaaaaaaaaaaaaaaaaaa'), throwsA(isA<longitudMaxima>()));
+
+
+  });
+
+  test('Debe de tener caracteres especiales', () async{
+
+  expect(()=> Nombre('[][[]]'), throwsA(isA<caracteresInvalidos>()) );
+
+
+  });
+
+  
   
   
 }
