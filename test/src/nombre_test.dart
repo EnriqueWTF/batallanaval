@@ -3,9 +3,10 @@ import 'package:test/test.dart';
 
 void main() {
   test('Debe de tener un minimo de longitud', () async {
-expect(()) => Nombre(''), throwsA(isA<longitudMinima>()));
+  expect(() => Nombre('ol'), throwsA(isA<longitudMinima>()));
 
 
   });
+  
   
 }
