@@ -6,7 +6,12 @@ class Partida{
 
 Partida(){
   estado=Estado.creada;
+
+
+
+
+
+
+  
 }
-
-
 }
