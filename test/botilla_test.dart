@@ -7,7 +7,11 @@ void main() {
       final nombres = ['Portaaviones', 'Acorazado', 'Submarino','Submarino',];
       expect(validarFlotilla  (nombres), isFalse);
    });
-  
+   test('La flotilla dede ser maximo de 5 barcos', () {
+      final nombres = ['Portaaviones', 'Acorazado', 'Submarino','a','b',];
+      expect(validarFlotilla(nombres), isFalse);
+      
+   });
  
   });
 }
