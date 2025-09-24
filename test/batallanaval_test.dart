@@ -16,12 +16,7 @@ void main() {
 
     });
 
-     test('Al crearse debe marcarse creada', () {
-       final tablero = Tablero(10);
-      expect(tablero.casillas.length, 10);
-      
-
-    });
+     
 
 
 

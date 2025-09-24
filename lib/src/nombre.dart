@@ -14,7 +14,9 @@ class Nombre {
     if (!RegExp(r'^[a-zA-Z0-9]+$').hasMatch(valor)) {
       throw caracteresInvalidos();
     }
+    
   }
+
 }
 
 
