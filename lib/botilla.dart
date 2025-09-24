@@ -1,8 +1,24 @@
+import 'dart:io';
+import 'package:batallanaval/src/punto.dart';
+import 'package:batallanaval/src/Elemento';
 enum TiposBarcos{bote,lancha,submarino,crucero,portaaviones}
 
 enum DreccionesHacia{arriba,abajo,izquierda,derecha}
 
+class barco{
+final TiposBarcos tipo;
+final DreccionesHacia direccion;
+final Punto puntoIncial;
+List<Elemeto> _elementos =[];
 
+barco({
+  required this.tipo, 
+  required this.puntoIncial, 
+  required this.direccion
+  });
+
+
+}
 
 bool validarFlotilla(List<String> nombres) {
   if (_hayNombresRepetidos(nombres)) {
