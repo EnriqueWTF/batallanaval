@@ -7,7 +7,7 @@ class Elemento{
 
   final Punto punto;
   bool tocado = false;
-Elemento({required  this.punto})
+Elemento({required  this.punto});
 
 
 
