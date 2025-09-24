@@ -1,3 +1,8 @@
+enum TiposBarcos{bote,lancha,submarino,crucero,portaaviones}
+
+enum DreccionesHacia{arriba,abajo,izquierda,derecha}
+
+
 
 bool validarFlotilla(List<String> nombres) {
   if (_hayNombresRepetidos(nombres)) {
