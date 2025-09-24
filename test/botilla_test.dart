@@ -1,4 +1,5 @@
 import 'package:batallanaval/botilla.dart';
+import 'package:batallanaval/src/punto.dart';
 import 'package:test/test.dart';
 
 void main() {
@@ -13,5 +14,16 @@ void main() {
       
    });
  
+
+
+  test('Barco portaaviones', () {
+    final miBarco = barco(
+      tipo: TiposBarcos.portaaviones,
+      puntoIncial: Punto(columna: 1, fila: 1),
+      direccion: DreccionesHacia.derecha,
+    );
+      expect(miBarco.tamaño, 5);
+      
+   });
   });
 }

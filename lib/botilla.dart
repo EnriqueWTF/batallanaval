@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'package:batallanaval/src/punto.dart';
-import 'package:batallanaval/src/Elemento';
+import 'package:batallanaval/Elemento.dart';
 enum TiposBarcos{bote,lancha,submarino,crucero,portaaviones}
 
 enum DreccionesHacia{arriba,abajo,izquierda,derecha}
@@ -9,14 +9,32 @@ class barco{
 final TiposBarcos tipo;
 final DreccionesHacia direccion;
 final Punto puntoIncial;
-List<Elemeto> _elementos =[];
+List<Elemento> _elementos =[];
 
 barco({
   required this.tipo, 
   required this.puntoIncial, 
   required this.direccion
+
+
+  
   });
 
+int get tamaño {
+  
+    switch (tipo) {
+      case TiposBarcos.bote:
+        return 1;
+      case TiposBarcos.lancha:
+        return 2;
+      case TiposBarcos.submarino:
+        return 3;
+      case TiposBarcos.crucero:
+        return 4;
+      case TiposBarcos.portaaviones:
+        return 5;
+    }
+  }
 
 }
 
