@@ -13,7 +13,15 @@ void main() {
       expect(validarFlotilla(nombres), isFalse);
       
    });
- 
+ var barcosNumero =[]
+var barcosIncorrectos ={
+  Barco(TiposBarcos.bote,puntoIncial: Punto(columna: 1, fila: 1), DreccionesHacia.abajo),
+    Barco(TiposBarcos.bote,puntoIncial: Punto(columna: 1, fila: 1), DreccionesHacia.abajo),
+      Barco(TiposBarcos.bote,puntoIncial: Punto(columna: 1, fila: 1), DreccionesHacia.abajo),
+        Barco(TiposBarcos.bote,puntoIncial: Punto(columna: 1, fila: 1), DreccionesHacia.abajo),
+          Barco(TiposBarcos.bote,puntoIncial: Punto(columna: 1, fila: 1), DreccionesHacia.abajo),
+
+}
 
 
   test('Barco portaaviones', () {

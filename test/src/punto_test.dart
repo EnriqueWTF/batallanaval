@@ -10,7 +10,6 @@ void main() {
       expect(p1.distancia(p2), equals(1));
   });
 
-
     test('ddeben de estar a 2 cordenadas de distancia', () {
 
     Punto p1 = Punto(columna: 1, fila: 1);

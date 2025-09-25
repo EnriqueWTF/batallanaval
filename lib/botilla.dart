@@ -5,6 +5,7 @@ enum TiposBarcos{bote,lancha,submarino,crucero,portaaviones}
 
 enum DreccionesHacia{arriba,abajo,izquierda,derecha}
 
+
 class barco{
 final TiposBarcos tipo;
 final DreccionesHacia direccion;
@@ -14,12 +15,58 @@ List<Elemento> _elementos =[];
 barco({
   required this.tipo, 
   required this.puntoIncial, 
-  required this.direccion
+  required this.direccion,
 
 
   
-  });
+  }){
 
+  int cuantasVeces = mapaTamanos[tipo]!;
+  int columna = puntoIncial.columna;
+  int fila = puntoIncial.fila;
+  while(cuantasVeces>0){
+
+_elementos.add(
+  Elemento(punto: Punto(columna: columna, fila: fila)
+  ),
+
+
+  );
+
+  columna =columna+dcolumna[direccion]!;
+  fila = fila+dfila[direccion]!;
+
+
+    cuantasVeces--;
+  }
+  }
+
+  }
+
+
+  var mapaTamanos ={
+
+
+    TiposBarcos.bote 1,
+     TiposBarcos.lancha 2,
+      TiposBarcos.submarino 3,
+       TiposBarcos.crucero 4,
+        TiposBarcos.portaaviones 5,
+  }
+  
+
+  var dfila = {DreccionesHacia.abajo:1, 
+  DreccionesHacia.arriba -1,
+  DreccionesHacia.derecha 0,
+  DreccionesHacia.izquierda 0,}
+
+  var dcolumna= {DreccionesHacia.abajo:1,
+   DreccionesHacia.arriba -1,
+   DreccionesHacia.derecha 0,
+   DreccionesHacia.izquierda 0,}
+
+
+int get tamaño {
 int get tamaño {
   
     switch (tipo) {
