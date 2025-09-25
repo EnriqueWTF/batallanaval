@@ -3,18 +3,19 @@ import 'package:batallanaval/src/punto.dart';
 import 'package:batallanaval/Elemento.dart';
 enum TiposBarcos{bote,lancha,submarino,crucero,portaaviones}
 
-enum DreccionesHacia{arriba,abajo,izquierda,derecha}
+num DreccionesHacia{arriba,abajo,izquierda,derecha}
 
 
-class barco{
+class Barco{ 
 final TiposBarcos tipo;
 final DreccionesHacia direccion;
 final Punto puntoIncial;
 List<Elemento> _elementos =[];
 
-barco({
-  required this.tipo, 
-  required this.puntoIncial, 
+List<Elemento> get elementos => _elementos; 
+Barco({
+  required this.tipo,
+  required this.puntoIncial,
   required this.direccion,
 
 
@@ -55,48 +56,32 @@ _elementos.add(
   }
   
 
-  var dfila = {DreccionesHacia.abajo:1, 
+  var dfila = {
+    DreccionesHacia.abajo:1, 
   DreccionesHacia.arriba -1,
   DreccionesHacia.derecha 0,
   DreccionesHacia.izquierda 0,}
 
-  var dcolumna= {DreccionesHacia.abajo:1,
+  var dcolumna= {
+  DreccionesHacia.abajo:1,
    DreccionesHacia.arriba -1,
    DreccionesHacia.derecha 0,
    DreccionesHacia.izquierda 0,}
 
 
-int get tamaño {
-int get tamaño {
-  
-    switch (tipo) {
-      case TiposBarcos.bote:
-        return 1;
-      case TiposBarcos.lancha:
-        return 2;
-      case TiposBarcos.submarino:
-        return 3;
-      case TiposBarcos.crucero:
-        return 4;
-      case TiposBarcos.portaaviones:
-        return 5;
-    }
-  }
 
-}
+
+
 
 bool validarFlotilla(List<String> nombres) {
   if (_hayNombresRepetidos(nombres)) {
-  return true;
-    throw Exception('No se permiten nombres de barcos repetidos.');
+    return false;
   }
   if (_excedeTamanoMaximoFlotilla(nombres)) {
-    throw Exception('La flotilla no puede tener más de 5 barcos.');
-      return true;
+    return false; 
   }
-  return false;
+  return true;
 }
-
 
 
 

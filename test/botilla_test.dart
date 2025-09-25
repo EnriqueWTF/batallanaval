@@ -22,7 +22,11 @@ var barcosIncorrectos ={
           Barco(TiposBarcos.bote,puntoIncial: Punto(columna: 1, fila: 1), DreccionesHacia.abajo),
 
 }
+test('Barcos incorrectos, posiciones incorrectas', (){
 
+
+
+)}
 
   test('Barco portaaviones', () {
     final miBarco = barco(
