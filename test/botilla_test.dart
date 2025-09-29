@@ -12,7 +12,7 @@ void main() {
       );
       final barco2 = Barco(
         tipo: TiposBarcos.lancha,
-        puntoIncial: Punto(columna: 3, fila: 5), 
+        puntoIncial: Punto(columna: 3, fila: 1), 
         direccion: DreccionesHacia.derecha,
       );
       final barco3 = Barco(
@@ -36,6 +36,18 @@ void main() {
         direccion: DreccionesHacia.derecha,
       );
       final flotilla = [barco1, barco2];
+      expect(validarFlotilla(flotilla), isFalse);
+    });
+
+    test('Debe devolver false si la flotilla excede el tamaño máximo (5 barcos)', () {
+      final barco1 = Barco(tipo: TiposBarcos.bote, puntoIncial: Punto(columna: 1, fila: 1), direccion: DreccionesHacia.derecha);
+      final barco2 = Barco(tipo: TiposBarcos.lancha, puntoIncial: Punto(columna: 3, fila: 1), direccion: DreccionesHacia.derecha);
+      final barco3 = Barco(tipo: TiposBarcos.submarino, puntoIncial: Punto(columna: 5, fila: 1), direccion: DreccionesHacia.derecha);
+      final barco4 = Barco(tipo: TiposBarcos.crucero, puntoIncial: Punto(columna: 7, fila: 1), direccion: DreccionesHacia.derecha);
+      final barco5 = Barco(tipo: TiposBarcos.portaaviones, puntoIncial: Punto(columna: 9, fila: 1), direccion: DreccionesHacia.derecha);
+      final barco6 = Barco(tipo: TiposBarcos.bote, puntoIncial: Punto(columna: 11, fila: 1), direccion: DreccionesHacia.derecha); // Sexto barco
+
+      final flotilla = [barco1, barco2, barco3, barco4, barco5, barco6];
       expect(validarFlotilla(flotilla), isFalse);
     });
 
