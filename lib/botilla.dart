@@ -79,7 +79,17 @@ bool validarFlotilla(List<String> nombres) {
   if (_excedeTamanoMaximoFlotilla(nombres)) {
     return false;
   }
+  if(_estanBarcosCerca(barcos)){
+
+
+
+    return false;
+  }
   return true;
+}
+
+bool _estanBarcosCerca(barcos) {
+  
 }
 
 
