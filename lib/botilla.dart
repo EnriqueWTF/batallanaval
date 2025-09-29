@@ -43,7 +43,7 @@ _elementos.add(
   }
   }
 
-  int get tamaño => mapaTamanos[tipo]!;
+  int get tamano => mapaTamanos[tipo]!;
 
   }
 
@@ -72,27 +72,36 @@ _elementos.add(
     };
 
 
-bool validarFlotilla(List<String> nombres) {
-  if (_hayNombresRepetidos(nombres)) {
+bool validarFlotilla(List<Barco> barcos) { 
+  if (_hayNombresRepetidos(barcos.map((b) => b.tipo.toString()).toList())) {
     return false;
   }
-  if (_excedeTamanoMaximoFlotilla(nombres)) {
+  if (_excedeTamanoMaximoFlotilla(barcos.map((b) => b.tipo.toString()).toList())) {
     return false;
   }
-  if(_estanBarcosCerca(barcos)){
 
-
-
+  if (_estanBarcosCerca(barcos)) {
     return false;
   }
   return true;
 }
 
-bool _estanBarcosCerca(barcos) {
-  
+
+bool _estanBarcosCerca(List<Barco> barcos) {
+  for (int i = 0; i < barcos.length; i++) {
+    for (int j = i + 1; j < barcos.length; j++) {
+      for (var elemento1 in barcos[i].elementos) {
+      for (var elemento2 in barcos[j].elementos) {
+       if ((elemento1.punto.columna - elemento2.punto.columna).abs() <= 1 &&
+          (elemento1.punto.fila - elemento2.punto.fila).abs() <= 1) {
+          return true; 
+         }
+     }
+      }
+    }
+  }
+  return false; 
 }
-
-
 
 
 
