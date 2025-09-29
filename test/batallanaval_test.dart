@@ -11,7 +11,7 @@ void main() {
     });
 
     test('Al crearse debe marcarse creada', () {
-      Partida partida = new Partida();
+      Partida partida = Partida();
       expect(partida.estado, equals(Estado.creada));
 
     });

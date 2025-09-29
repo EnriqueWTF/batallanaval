@@ -2,7 +2,7 @@ import 'nombre.dart';
 
 class Jugador {
 
-|
+
 
 
 

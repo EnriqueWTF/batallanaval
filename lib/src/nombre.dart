@@ -1,4 +1,3 @@
-import 'package:batallanaval/src/jugador.dart';
 
 class Nombre {
   final String valor;

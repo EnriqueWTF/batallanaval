@@ -1,18 +1,20 @@
 import 'dart:io';
 import 'package:batallanaval/src/punto.dart';
 import 'package:batallanaval/Elemento.dart';
+
 enum TiposBarcos{bote,lancha,submarino,crucero,portaaviones}
 
-num DreccionesHacia{arriba,abajo,izquierda,derecha}
+enum DreccionesHacia{arriba,abajo,izquierda,derecha}
 
 
-class Barco{ 
+class Barco{
 final TiposBarcos tipo;
 final DreccionesHacia direccion;
 final Punto puntoIncial;
-List<Elemento> _elementos =[];
+final List<Elemento> _elementos =[];
 
-List<Elemento> get elementos => _elementos; 
+List<Elemento> get elementos => _elementos;
+
 Barco({
   required this.tipo,
   required this.puntoIncial,
@@ -37,40 +39,37 @@ _elementos.add(
   columna =columna+dcolumna[direccion]!;
   fila = fila+dfila[direccion]!;
 
-
     cuantasVeces--;
   }
   }
+
+  int get tamaño => mapaTamanos[tipo]!;
 
   }
 
 
   var mapaTamanos ={
-
-
-    TiposBarcos.bote 1,
-     TiposBarcos.lancha 2,
-      TiposBarcos.submarino 3,
-       TiposBarcos.crucero 4,
-        TiposBarcos.portaaviones 5,
-  }
+    TiposBarcos.bote: 1,
+     TiposBarcos.lancha: 2,
+      TiposBarcos.submarino: 3,
+       TiposBarcos.crucero: 4,
+        TiposBarcos.portaaviones: 5,
+  };
   
 
   var dfila = {
-    DreccionesHacia.abajo:1, 
-  DreccionesHacia.arriba -1,
-  DreccionesHacia.derecha 0,
-  DreccionesHacia.izquierda 0,}
+    DreccionesHacia.abajo: 1,
+    DreccionesHacia.arriba: -1,
+    DreccionesHacia.derecha: 0,
+    DreccionesHacia.izquierda: 0,
+    };
 
   var dcolumna= {
-  DreccionesHacia.abajo:1,
-   DreccionesHacia.arriba -1,
-   DreccionesHacia.derecha 0,
-   DreccionesHacia.izquierda 0,}
-
-
-
-
+    DreccionesHacia.abajo:0,
+    DreccionesHacia.arriba: 0,
+    DreccionesHacia.derecha: 1,
+    DreccionesHacia.izquierda: -1,
+    };
 
 
 bool validarFlotilla(List<String> nombres) {
@@ -78,11 +77,10 @@ bool validarFlotilla(List<String> nombres) {
     return false;
   }
   if (_excedeTamanoMaximoFlotilla(nombres)) {
-    return false; 
+    return false;
   }
   return true;
 }
-
 
 
 
@@ -97,7 +95,3 @@ bool _excedeTamanoMaximoFlotilla(List<String> nombres) {
    const int maximoPermitido = 5;
   return nombres.length > maximoPermitido;
 }
-
-
-
-

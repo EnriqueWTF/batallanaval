@@ -1,41 +1,97 @@
-import 'package:batallanaval/botilla.dart';
+import 'dart:io';
 import 'package:batallanaval/src/punto.dart';
-import 'package:test/test.dart';
+import 'package:batallanaval/Elemento.dart';
 
-void main() {
-  group('hayNombresRepetidos', () {
-    test('Debe devolver false si no hay nombres repetidos', () {
-      final nombres = ['Portaaviones', 'Acorazado', 'Submarino','Submarino',];
-      expect(validarFlotilla  (nombres), isFalse);
-   });
-   test('La flotilla dede ser maximo de 5 barcos', () {
-      final nombres = ['Portaaviones', 'Acorazado', 'Submarino','a','b',];
-      expect(validarFlotilla(nombres), isFalse);
-      
-   });
- var barcosNumero =[]
-var barcosIncorrectos ={
-  Barco(TiposBarcos.bote,puntoIncial: Punto(columna: 1, fila: 1), DreccionesHacia.abajo),
-    Barco(TiposBarcos.bote,puntoIncial: Punto(columna: 1, fila: 1), DreccionesHacia.abajo),
-      Barco(TiposBarcos.bote,puntoIncial: Punto(columna: 1, fila: 1), DreccionesHacia.abajo),
-        Barco(TiposBarcos.bote,puntoIncial: Punto(columna: 1, fila: 1), DreccionesHacia.abajo),
-          Barco(TiposBarcos.bote,puntoIncial: Punto(columna: 1, fila: 1), DreccionesHacia.abajo),
+enum TiposBarcos{bote,lancha,submarino,crucero,portaaviones}
 
+enum DreccionesHacia{arriba,abajo,izquierda,derecha}
+
+
+class Barco{
+final TiposBarcos tipo;
+final DreccionesHacia direccion;
+final Punto puntoIncial;
+final List<Elemento> _elementos =[];
+
+List<Elemento> get elementos => _elementos;
+
+Barco({
+  required this.tipo,
+  required this.puntoIncial,
+  required this.direccion,
+
+
+  
+  }){
+
+  int cuantasVeces = mapaTamanos[tipo]!;
+  int columna = puntoIncial.columna;
+  int fila = puntoIncial.fila;
+  while(cuantasVeces>0){
+
+_elementos.add(
+  Elemento(punto: Punto(columna: columna, fila: fila)
+  ),
+
+
+  );
+
+  columna =columna+dcolumna[direccion]!;
+  fila = fila+dfila[direccion]!;
+
+    cuantasVeces--;
+  }
+  }
+
+  int get tamaño => mapaTamanos[tipo]!; // Getter 'tamaño' simplificado y dentro de la clase
+
+  }
+
+
+  var mapaTamanos ={
+    TiposBarcos.bote: 1,
+     TiposBarcos.lancha: 2,
+      TiposBarcos.submarino: 3,
+       TiposBarcos.crucero: 4,
+        TiposBarcos.portaaviones: 5,
+  };
+  
+
+  var dfila = {
+    DreccionesHacia.abajo: 1,
+    DreccionesHacia.arriba: -1,
+    DreccionesHacia.derecha: 0,
+    DreccionesHacia.izquierda: 0,
+    };
+
+  var dcolumna= {
+    DreccionesHacia.abajo:0, // Corregido a 0 para no cambiar columna al ir abajo
+    DreccionesHacia.arriba: 0, // Corregido a 0 para no cambiar columna al ir arriba
+    DreccionesHacia.derecha: 1,
+    DreccionesHacia.izquierda: -1,
+    };
+
+
+bool validarFlotilla(List<String> nombres) {
+  if (_hayNombresRepetidos(nombres)) {
+    return false;
+  }
+  if (_excedeTamanoMaximoFlotilla(nombres)) {
+    return false;
+  }
+  return true;
 }
-test('Barcos incorrectos, posiciones incorrectas', (){
 
 
 
-)}
 
-  test('Barco portaaviones', () {
-    final miBarco = barco(
-      tipo: TiposBarcos.portaaviones,
-      puntoIncial: Punto(columna: 1, fila: 1),
-      direccion: DreccionesHacia.derecha,
-    );
-      expect(miBarco.tamaño, 5);
-      
-   });
-  });
+
+
+bool _hayNombresRepetidos(List<String> nombres) {
+  return nombres.length != nombres.toSet().length;
+}
+
+bool _excedeTamanoMaximoFlotilla(List<String> nombres) {
+   const int maximoPermitido = 5;
+  return nombres.length > maximoPermitido;
 }
