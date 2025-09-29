@@ -66,4 +66,19 @@ void main() {
       expect(validarFlotilla(flotilla), isFalse);
     });
 
+    test('Debe devolver false si los barcos están demasiado cerca ', () {
+      final barco1 = Barco(
+        tipo: TiposBarcos.bote,
+        puntoIncial: Punto(columna: 1, fila: 1),
+        direccion: DreccionesHacia.derecha,
+      );
+      final barco2 = Barco(
+        tipo: TiposBarcos.lancha,
+        puntoIncial: Punto(columna: 2, fila: 2),
+        direccion: DreccionesHacia.abajo,
+      );
+      final flotilla = [barco1, barco2];
+      expect(validarFlotilla(flotilla), isFalse);
+    });
+
 }
