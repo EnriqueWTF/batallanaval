@@ -51,4 +51,19 @@ void main() {
       expect(validarFlotilla(flotilla), isFalse);
     });
 
+    test('Debe devolver false si los barcos están superpuestos', () {
+      final barco1 = Barco(
+        tipo: TiposBarcos.bote,
+        puntoIncial: Punto(columna: 1, fila: 1),
+        direccion: DreccionesHacia.derecha,
+      );
+      final barco2 = Barco(
+        tipo: TiposBarcos.lancha,
+        puntoIncial: Punto(columna: 1, fila: 1),
+        direccion: DreccionesHacia.derecha,
+      );
+      final flotilla = [barco1, barco2];
+      expect(validarFlotilla(flotilla), isFalse);
+    });
+
 }
